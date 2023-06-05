@@ -6,3 +6,7 @@ php artisan make:model Comment -mfsc
 
 //Criação seeder de usuários:
 php artisan make:seeder UserSeeder
+
+
+
+php artisan migrate:fresh --seed

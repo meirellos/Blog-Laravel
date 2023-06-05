@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +20,9 @@ class CommentFactory extends Factory
     {
         return [
             //
+            'user_id' => User::pluck('id')->random(),
+            'post_id' => Post::pluck('id')->random(),
+            'comment' => $this->faker->paragraph(5),
         ];
     }
 }
