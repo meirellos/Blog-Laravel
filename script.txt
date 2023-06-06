@@ -10,3 +10,19 @@ php artisan make:seeder UserSeeder
 
 
 php artisan migrate:fresh --seed
+
+php artisan tinker //Para testar o relacionamento.
+
+//Relacionamento tabela de usuários.
+$user = new App\Models\User
+
+$user->limit(5)->get();
+$user = User::limit(5)->get();
+
+//Pegando posts
+$user = User::limit(5)->with('posts')->get();
+
+//Pegando comentários
+$user = User::limit(5)->with('comments')->get();
+
+//Relacionamento tabela de posts.
