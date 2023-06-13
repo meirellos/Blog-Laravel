@@ -10,3 +10,13 @@
 #content-post{
     text-align: center;
 }
+
+ul#comments{
+    list-style: none;
+}
+
+ul#comments li{
+    background: bisque;
+    padding: 5px;
+    margin-bottom: 5px;
+}

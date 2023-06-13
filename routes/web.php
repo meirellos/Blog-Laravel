@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CommentController;
 
 //Chamando o controller home, e a função index.
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -20,3 +21,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 //Listagem de todos os posts
 
 Route::get('/posts', [PostsController::class, 'index'])->name('posts');
+
+//Adicionando comentário novo.
+Route::post('/comment', [CommentController::class, 'store'])->name('comment');
+Route::get('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
