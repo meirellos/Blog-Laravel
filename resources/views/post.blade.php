@@ -19,9 +19,9 @@
     @endif
         <div class="text-center">
             {{ $errors->first('comment') }}
-            <form action="{{ route('comment') }}" method="post">
+            <form action="{{ route('comment', $post->id) }}" method="post">
                 @csrf
-                <input type="hidden" name="post_id" value="{{ $post->id }}">
+                {{-- <input type="hidden" name="post_id" value="{{ $post->id }}"> --}}
                 <textarea name="comment" id="" cols="30" rows="10"></textarea> <br />
                 <button type="submit">Comentar</button>
             </form>

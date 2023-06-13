@@ -23,5 +23,5 @@ Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 Route::get('/posts', [PostsController::class, 'index'])->name('posts');
 
 //Adicionando comentário novo.
-Route::post('/comment', [CommentController::class, 'store'])->name('comment');
-Route::get('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+Route::post('/comment/{post}', [CommentController::class, 'store'])->name('comment');
+Route::get('/comment/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
