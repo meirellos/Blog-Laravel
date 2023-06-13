@@ -4,7 +4,7 @@
 
   <h2>Buscar Post</h2>
    <form action="{{ route('home') }}" method="get">
-    <input type="text" name="search" id="" placeholder="O que deseja buscar?" value="{{ request()->input('search') ?? ''}}">
+    <input type="text" name="search" id="" placeholder="O que deseja buscar?">
     <button type="submit">Buscar</button>
    </form>
 
@@ -15,7 +15,7 @@
 <div class="container">
     <!--Section: Content-->
     <section class="text-center">
-      <h4 class="mb-5"><strong>Últimos Posts</strong></h4>
+      <h4 class="mb-5"><strong>Posts ({{ $posts->total() }})</strong></h4>
 
       <div class="row">
         @forelse ($posts as $post)
@@ -41,12 +41,11 @@
           <h2>Não há posts</h2>              
         @endforelse
 
-        @if(request()->input('search'))
-            {{$posts->appends(['search' => request()->input('search')])->links()}}
-        @endif
+          {{ $posts->links()}}
 
-
-    </section>   
+    </section>
+    <!--Section: Content-->
+   
   </div>
 
 @endsection

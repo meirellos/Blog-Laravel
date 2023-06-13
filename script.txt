@@ -29,3 +29,9 @@ $user = User::limit(5)->with('comments')->get();
 
 //Controller login
 php artisan make:controller LoginController
+
+//Controller posts
+php artisan make:controller PostsController
+
+//Bootstrap pagination laravel
+Paginator::useBootstrap();

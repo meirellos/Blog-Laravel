@@ -7,8 +7,17 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
-        $posts = Post::limit(10)->with(['user','comments'])->orderBy('id', 'desc')->get();
+    public function index(Request $request){
+
+       //dd($request->input('search'));
+
+       if($request->input('search')){
+            $posts = Post::search($request->input('search'));
+       }else{
+            $posts = Post::limit(10)->with(['user','comments'])->orderBy('id', 'desc')->get();
+        }
+        
+       
         return view('home', ['title' => 'Home - Blog', 'posts' => $posts]);
     }
 }
