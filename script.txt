@@ -26,3 +26,6 @@ $user = User::limit(5)->with('posts')->get();
 $user = User::limit(5)->with('comments')->get();
 
 //Relacionamento tabela de posts.
+
+//Controller login
+php artisan make:controller LoginController

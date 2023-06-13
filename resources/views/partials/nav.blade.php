@@ -11,19 +11,25 @@
     <div class="collapse navbar-collapse" id="navbarExample01">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item active">
-          <a class="nav-link" aria-current="page" href="#intro">Home</a>
+          <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
-            target="_blank">Learn Bootstrap 5</a>
+          <a class="nav-link" href="#" rel="nofollow"
+            target="_blank">Posts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Download MDB UI KIT</a>
+          <a class="nav-link" href="{{ route('login') }}">Login</a>
         </li>
       </ul>
+      Bem vindo
+      @if (auth()->guest())
+          Visitante
+      @else
+        {{ auth()->user()->fullName }} | <a href="{{ route('logout') }}"> Logout</a>
+      @endif
 
+ <!-- Icons
       <ul class="navbar-nav d-flex flex-row">
-        <!-- Icons -->
         <li class="nav-item me-3 me-lg-0">
           <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
             target="_blank">
@@ -46,5 +52,6 @@
           </a>
         </li>
       </ul>
+      -->
     </div>
   </div>

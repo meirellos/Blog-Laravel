@@ -42,6 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //Pegando nome completo de usuário
+
+    public function getFullnameAttribute(){
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
     //Um usuário pode fazer vários comentarios.
     public function comments(){
         return $this->hasMany(Comment::class);
