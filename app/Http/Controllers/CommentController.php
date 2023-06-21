@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CommentPost;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class CommentController extends Controller
             'comment' => 'required',
         ]);
 
+
         $created =  Comment::create([
             'comment' => $validated['comment'],
             'user_id' => auth()->user()->id,
@@ -25,6 +27,7 @@ class CommentController extends Controller
         ]);
 
         if ($created) {
+            event(new CommentPost(auth()->user(), $post));
             return back();
         }
         return back()->with('error_create_comment', 'Ocorreu um erro ao cadastrar comentário, tente novamente.');

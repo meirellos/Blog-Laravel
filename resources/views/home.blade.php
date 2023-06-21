@@ -5,7 +5,7 @@
   <h2>Buscar Post</h2>
    <form action="{{ route('home') }}" method="get">
     <input type="text" name="search" id="" placeholder="O que deseja buscar?" value="{{ request()->input('search') ?? ''}}">
-    <button type="submit">Buscar</button>
+    <button type="submit" class="btn btn-primary">Buscar</button>
    </form>
 
 @endsection
@@ -28,7 +28,7 @@
             <div class="card">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                 <img src="{{ $post->thumb }}" class="img-fluid" />
-                <a href="#!">
+                <a href="{{ route('post', $post->slug) }}">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
               </div>

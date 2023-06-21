@@ -35,3 +35,17 @@ php artisan make:controller PostsController
 
 //Bootstrap pagination laravel
 Paginator::useBootstrap();
+
+//Criação de Evento
+php artisan make:event CommentPost
+
+//Criação de Listener e vinculação com o Evento
+php artisan make:listener SendEmailCommentPost --event=CommentPost
+
+//Criação de classe de envio de email.
+php artisan make:mail CommentPost
+
+//Config de email.
+Mailtrap.io 
+
+//Pegar a config do laravel 7+ neste site acima, colar no .env.

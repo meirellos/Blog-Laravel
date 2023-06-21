@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\CommentPost;
+use App\Listeners\SendEmailCommentPost;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +20,11 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        CommentPost::class => [
+            SendEmailCommentPost::class,
+        ],
+        
     ];
 
     /**
@@ -39,4 +46,24 @@ class EventServiceProvider extends ServiceProvider
     {
         return false;
     }
+
+	/**
+	 * The event to listener mappings for the application.
+	 * 
+	 * @return array<class-string, array<int, class-string>>
+	 */
+	public function getListen() {
+		return $this->listen;
+	}
+	
+	/**
+	 * The event to listener mappings for the application.
+	 * 
+	 * @param array<class-string, array<int, class-string>> $listen The event to listener mappings for the application.
+	 * @return self
+	 */
+	public function setListen($listen): self {
+		$this->listen = $listen;
+		return $this;
+	}
 }
